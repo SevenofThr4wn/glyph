@@ -1,5 +1,11 @@
 import { createAuthClient } from "better-auth/react";
-import { anonymousClient, lastLoginMethodClient, emailOTPClient, apiKeyClient, adminClient  } from "better-auth/client/plugins";
+import {
+  anonymousClient,
+  lastLoginMethodClient,
+  emailOTPClient,
+  apiKeyClient,
+  adminClient,
+} from "better-auth/client/plugins";
 import { clientEnv } from "../config";
 
 const baseURL = clientEnv.NEXT_PUBLIC_BETTER_AUTH_URL;
@@ -12,7 +18,13 @@ if (!baseURL && typeof window !== "undefined") {
 
 export const authClient = createAuthClient({
   baseURL: baseURL || "/api/auth",
-  plugins: [lastLoginMethodClient(), anonymousClient(), emailOTPClient(), apiKeyClient(), adminClient()],
+  plugins: [
+    lastLoginMethodClient(),
+    anonymousClient(),
+    emailOTPClient(),
+    apiKeyClient(),
+    adminClient(),
+  ],
 });
 
 export const { useSession, getSession } = authClient;

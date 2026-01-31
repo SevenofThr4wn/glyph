@@ -1,5 +1,5 @@
 "use client";
 
 export default function ChangelogPage() {
-    return <div>Changelog Page</div>;
+  return <div>Changelog Page</div>;
 }

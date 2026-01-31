@@ -39,24 +39,24 @@ export function NavUser() {
   const handleLogout = () => {
     authClient.signOut();
     router.refresh();
-  }
+  };
   if (!currentUser) {
     return (
       <SidebarMenu>
         <SidebarMenuItem>
-        <SidebarMenuButton onClick={() => router.push('/login')}>
-          <LogIn />
-          Sign In
-        </SidebarMenuButton>
+          <SidebarMenuButton onClick={() => router.push("/login")}>
+            <LogIn />
+            Sign In
+          </SidebarMenuButton>
         </SidebarMenuItem>
         <SidebarMenuItem>
-          <SidebarMenuButton onClick={() => router.push('/register')}>
+          <SidebarMenuButton onClick={() => router.push("/register")}>
             <Form />
             Register
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
-    )
+    );
   }
   return (
     <SidebarMenu>
@@ -67,12 +67,19 @@ export function NavUser() {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="w-8 h-8 rounded-lg">
-                <AvatarImage src={currentUser?.image ?? undefined} alt={currentUser?.name} />
-                <AvatarFallback className="rounded-lg">{getInitials(currentUser?.name ?? "")}</AvatarFallback>
+              <Avatar className="h-8 w-8 rounded-lg">
+                <AvatarImage
+                  src={currentUser?.image ?? undefined}
+                  alt={currentUser?.name}
+                />
+                <AvatarFallback className="rounded-lg">
+                  {getInitials(currentUser?.name ?? "")}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{currentUser?.name}</span>
+                <span className="truncate font-medium">
+                  {currentUser?.name}
+                </span>
                 <span className="truncate text-xs">{currentUser?.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
@@ -86,12 +93,19 @@ export function NavUser() {
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="w-8 h-8 rounded-lg">
-                  <AvatarImage src={currentUser?.image ?? undefined} alt={currentUser?.name} />
-                  <AvatarFallback className="rounded-lg">{getInitials(currentUser?.name ?? "")}</AvatarFallback>
+                <Avatar className="h-8 w-8 rounded-lg">
+                  <AvatarImage
+                    src={currentUser?.image ?? undefined}
+                    alt={currentUser?.name}
+                  />
+                  <AvatarFallback className="rounded-lg">
+                    {getInitials(currentUser?.name ?? "")}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{currentUser?.name}</span>
+                  <span className="truncate font-medium">
+                    {currentUser?.name}
+                  </span>
                   <span className="truncate text-xs">{currentUser?.email}</span>
                 </div>
               </div>
@@ -128,5 +142,4 @@ export function NavUser() {
       </SidebarMenuItem>
     </SidebarMenu>
   );
-
-} 
+}

@@ -101,9 +101,9 @@ export function RegisterForm() {
           onError: (ctx) => {
             toast.error("Registration Failed", {
               description: ctx.error.message || "Please try again.",
-              duration: 8000
+              duration: 8000,
             });
-          }
+          },
         },
       );
     } catch (error) {
@@ -118,7 +118,7 @@ export function RegisterForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-xl">
         <Card className="border-none shadow-lg">
           <CardHeader className="flex flex-col items-center space-y-2 pt-6">
@@ -129,7 +129,7 @@ export function RegisterForm() {
             </p>
           </CardHeader>
 
-          <CardContent className="px-8 space-y-6">
+          <CardContent className="space-y-6 px-8">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -262,7 +262,7 @@ export function RegisterForm() {
                             type="button"
                             variant="ghost"
                             size="icon"
-                            className="absolute right-0 top-0 h-full"
+                            className="absolute top-0 right-0 h-full"
                             onClick={() => setShowPassword((v) => !v)}
                           >
                             {showPassword ? (
@@ -283,7 +283,7 @@ export function RegisterForm() {
                   <Checkbox id="terms" />
                   <Label
                     htmlFor="terms"
-                    className="text-sm text-muted-foreground"
+                    className="text-muted-foreground text-sm"
                   >
                     I agree to the{" "}
                     <Link href="#" className="text-primary hover:underline">
@@ -305,7 +305,7 @@ export function RegisterForm() {
                 </Button>
               </form>
             </Form>
-            <div className="items-center justify-center flex gap-2 my-4">
+            <div className="my-4 flex items-center justify-center gap-2">
               <Separator className="flex-1" />
               <span className="text-sm">OR</span>
               <Separator className="flex-1" />
@@ -316,7 +316,7 @@ export function RegisterForm() {
           </CardContent>
 
           <CardFooter className="justify-center border-t py-4">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-muted-foreground text-sm">
               Already have an account?{" "}
               <Link href="/login" className="text-primary hover:underline">
                 Sign in

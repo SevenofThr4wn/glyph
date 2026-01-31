@@ -50,23 +50,23 @@ export default function FeaturesSection() {
   return (
     <div className="flex min-h-screen items-center justify-center py-12">
       <div>
-        <h2 className="text-center font-semibold text-4xl tracking-tight sm:text-5xl">
+        <h2 className="text-center text-4xl font-semibold tracking-tight sm:text-5xl">
           Unleash Your Furry Creativity
         </h2>
         <div className="mx-auto mt-10 grid max-w-(--breakpoint-lg) gap-6 px-6 sm:mt-16 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <div
-              className="flex flex-col rounded-xl border px-5 py-6 hover:transform hover:scale-105 hover:shadow-lg transition-all duration-200"
+              className="flex flex-col rounded-xl border px-5 py-6 transition-all duration-200 hover:scale-105 hover:transform hover:shadow-lg"
               key={feature.title}
             >
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-muted">
+              <div className="bg-muted mb-4 flex h-10 w-10 items-center justify-center rounded-full">
                 <feature.icon className="size-5" />
               </div>
-              <span className="font-semibold text-lg">{feature.title}</span>
-              <p className="mt-1 text-[15px] text-foreground/80">
+              <span className="text-lg font-semibold">{feature.title}</span>
+              <p className="text-foreground/80 mt-1 text-[15px]">
                 {feature.description}
               </p>
-              <div className="mt-4 flex items-center text-sm font-medium hover:underline text-blue-500">
+              <div className="mt-4 flex items-center text-sm font-medium text-blue-500 hover:underline">
                 {feature.url && <a href={feature.url}>Learn more &rarr;</a>}
               </div>
             </div>

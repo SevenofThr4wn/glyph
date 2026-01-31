@@ -1,5 +1,5 @@
 "use client";
 
 export default function LearnPortfolioBuilderPage() {
-    return <div>Learn - Portfolio Builder Page</div>;
+  return <div>Learn - Portfolio Builder Page</div>;
 }

@@ -1,5 +1,5 @@
 "use client";
 
 export default function ExploreCharactersPage() {
-    return <div>Explore Characters Page</div>;
+  return <div>Explore Characters Page</div>;
 }

@@ -32,7 +32,7 @@ import { toast } from "sonner";
 
 export function LoginForm() {
   const router = useRouter();
-    type LoginFormValues = z.infer<typeof loginSchema>;
+  type LoginFormValues = z.infer<typeof loginSchema>;
   const form = useForm<LoginFormValues>({
     defaultValues: {
       email: "",
@@ -40,7 +40,7 @@ export function LoginForm() {
     },
     resolver: zodResolver(loginSchema),
   });
-  
+
   const lastMethod = authClient.getLastUsedLoginMethod();
   const onSubmit = (data: LoginFormValues) => {
     try {
@@ -81,7 +81,7 @@ export function LoginForm() {
         <Card className="flex w-150 flex-col items-center">
           <CardHeader className="m-auto flex w-full max-w-xs flex-col items-center">
             <Pi className="h-9 w-9" />
-            <p className="mt-4 font-semibold text-xl tracking-tight">
+            <p className="mt-4 text-xl font-semibold tracking-tight">
               Welcome Back to Glyph!
             </p>
 
@@ -190,7 +190,7 @@ export function LoginForm() {
             <p className="mt-5 text-center text-sm">
               Don&apos;t have an account?
               <Link
-                className="ml-1 text-muted-foreground underline"
+                className="text-muted-foreground ml-1 underline"
                 href="/reg"
               >
                 Sign up

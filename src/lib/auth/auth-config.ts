@@ -105,7 +105,6 @@ export const auth = betterAuth({
         } else {
           encodedOTPType = encodeURIComponent("reset-password");
           await resend.emails.send({
-
             from: serverEnv.RESEND_EMAIL,
             to: email,
             subject: "Password Reset OTP Code",

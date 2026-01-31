@@ -12,9 +12,9 @@ import {
 } from "@react-email/components";
 
 interface OTPEmailProps {
-    username: string;
-    otp: string;
-    verifyUrl: string;
+  username: string;
+  otp: string;
+  verifyUrl: string;
 }
 
 const OTPEmail = (props: OTPEmailProps) => {
@@ -24,59 +24,59 @@ const OTPEmail = (props: OTPEmailProps) => {
     <Html lang="en" dir="ltr">
       <Tailwind>
         <Head />
-        <Body className="bg-gray-100 font-sans py-10">
-          <Container className="bg-white rounded-xl px-12 py-10 max-w-150 mx-auto">
+        <Body className="bg-gray-100 py-10 font-sans">
+          <Container className="mx-auto max-w-150 rounded-xl bg-white px-12 py-10">
             {/* Header */}
-            <Section className="text-center mb-8">
-              <Text className="text-[24px] font-bold text-gray-900 m-0">
+            <Section className="mb-8 text-center">
+              <Text className="m-0 text-[24px] font-bold text-gray-900">
                 Verify Your Account
               </Text>
             </Section>
 
             {/* Main Content */}
             <Section className="mb-8">
-              <Text className="text-[16px] text-gray-700 leading-6 mb-6">
+              <Text className="mb-6 text-[16px] leading-6 text-gray-700">
                 Hi {username},
               </Text>
-              <Text className="text-[16px] text-gray-700 leading-6 mb-6">
+              <Text className="mb-6 text-[16px] leading-6 text-gray-700">
                 You requested to verify your account. Use the verification code
                 below to complete the process:
               </Text>
 
               {/* OTP Code Display */}
-              <Section className="text-center bg-gray-50 rounded-xl py-6 px-8 mb-8">
-                <Text className="text-[32px] font-bold text-gray-900 letter-spacing-[8px] m-0">
+              <Section className="mb-8 rounded-xl bg-gray-50 px-8 py-6 text-center">
+                <Text className="letter-spacing-[8px] m-0 text-[32px] font-bold text-gray-900">
                   {otp}
                 </Text>
               </Section>
 
-              <Text className="text-[16px] text-gray-700 leading-6 mb-8">
+              <Text className="mb-8 text-[16px] leading-6 text-gray-700">
                 This code will expire in 10 minutes for security reasons. If you
                 didn&apos;t request this verification, please ignore this email.
               </Text>
             </Section>
 
             {/* CTA Button */}
-            <Section className="text-center mb-8">
+            <Section className="mb-8 text-center">
               <Button
                 href={verifyUrl}
-                className="bg-blue-600 text-white px-8 py-4 rounded-xl text-[16px] font-semibold no-underline box-border"
+                className="box-border rounded-xl bg-blue-600 px-8 py-4 text-[16px] font-semibold text-white no-underline"
               >
                 Verify Account
               </Button>
             </Section>
 
-            <Hr className="border-gray-200 my-8" />
+            <Hr className="my-8 border-gray-200" />
 
             {/* Footer */}
             <Section className="text-center">
-              <Text className="text-[14px] text-gray-500 leading-5 m-0">
+              <Text className="m-0 text-[14px] leading-5 text-gray-500">
                 © 2026 {clientEnv.NEXT_PUBLIC_APP_NAME}. All rights reserved.
               </Text>
-              <Text className="text-[14px] text-gray-500 leading-5 m-0">
+              <Text className="m-0 text-[14px] leading-5 text-gray-500">
                 {clientEnv.NEXT_PUBLIC_BUSINESS_ADDRESS}
               </Text>
-              <Text className="text-[14px] text-gray-500 leading-5 m-0">
+              <Text className="m-0 text-[14px] leading-5 text-gray-500">
                 <a href="#" className="text-gray-500 underline">
                   Unsubscribe
                 </a>
@@ -88,6 +88,5 @@ const OTPEmail = (props: OTPEmailProps) => {
     </Html>
   );
 };
-
 
 export { OTPEmail };

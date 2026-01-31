@@ -1,5 +1,5 @@
 "use client";
 
 export default function SubmitReportPage() {
-    return <div>Submit Report Page</div>;
+  return <div>Submit Report Page</div>;
 }
