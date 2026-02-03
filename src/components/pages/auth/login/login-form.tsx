@@ -3,17 +3,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FigmaIcon, GithubIcon, Pi } from "lucide-react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -29,6 +22,12 @@ import { authClient } from "@/lib/auth/auth-client";
 import { useRouter } from "next/navigation";
 import { IconBrandGoogle } from "@tabler/icons-react";
 import { toast } from "sonner";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 
 export function LoginForm() {
   const router = useRouter();
@@ -139,52 +138,56 @@ export function LoginForm() {
             </div>
           </CardHeader>
           <CardContent className="w-full max-w-xs">
-            <Form {...form}>
-              <form
-                className="w-full space-y-4"
-                onSubmit={form.handleSubmit(onSubmit)}
-              >
-                <FormField
+            <form
+              className="w-full space-y-4"
+              onSubmit={form.handleSubmit(onSubmit)}
+            >
+              <FieldGroup>
+                <Controller
                   control={form.control}
                   name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="w-full"
-                          placeholder="Email"
-                          type="email"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
+                  render={({ field, fieldState }) => (
+                    <Field>
+                      <FieldLabel>Email</FieldLabel>
+                      <Input
+                        className="w-full"
+                        placeholder="Email"
+                        type="email"
+                        {...field}
+                      />
+                      {fieldState.error && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
                   )}
                 />
-                <FormField
+              </FieldGroup>
+              <FieldGroup>
+                <Controller
                   control={form.control}
                   name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="w-full"
-                          placeholder="Password"
-                          type="password"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
+                  render={({ field, fieldState }) => (
+                    <Field>
+                      <FieldLabel>Password</FieldLabel>
+                      <Input
+                        className="w-full"
+                        placeholder="Password"
+                        type="password"
+                        {...field}
+                      />
+
+                      {fieldState.error && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
                   )}
                 />
-                <Button className="mt-4 w-full" type="submit">
-                  Continue with Email
-                </Button>
-              </form>
-            </Form>
+              </FieldGroup>
+
+              <Button className="mt-4 w-full" type="submit">
+                Continue with Email
+              </Button>
+            </form>
           </CardContent>
           <CardFooter>
             <p className="mt-5 text-center text-sm">

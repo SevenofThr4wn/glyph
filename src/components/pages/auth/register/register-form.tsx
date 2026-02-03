@@ -34,15 +34,6 @@ import {
 } from "@/components/ui/select";
 
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-
-import {
   Field,
   FieldContent,
   FieldDescription,
@@ -130,181 +121,169 @@ export function RegisterForm() {
           </CardHeader>
 
           <CardContent className="space-y-6 px-8">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
-              >
-                {/* Furry Identity */}
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              {/* Furry Identity */}
+              <FieldGroup>
+                <Controller
+                  name="idsAsFurry"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field
+                      orientation="responsive"
+                      data-invalid={fieldState.invalid}
+                    >
+                      <FieldContent>
+                        <FieldLabel>Do you identify as a Furry?</FieldLabel>
+                        <FieldDescription>
+                          This helps personalize your experience.
+                        </FieldDescription>
+                        {fieldState.error && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </FieldContent>
+
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
+                        <SelectTrigger className="min-w-32">
+                          <SelectValue placeholder="Select" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectSeparator />
+                          {questionOpts.map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </Field>
+                  )}
+                />
+              </FieldGroup>
+
+              {/* Names */}
+              <div className="grid grid-cols-2 gap-4">
                 <FieldGroup>
                   <Controller
-                    name="idsAsFurry"
                     control={form.control}
+                    name="firstName"
                     render={({ field, fieldState }) => (
-                      <Field
-                        orientation="responsive"
-                        data-invalid={fieldState.invalid}
-                      >
-                        <FieldContent>
-                          <FieldLabel>Do you identify as a Furry?</FieldLabel>
-                          <FieldDescription>
-                            This helps personalize your experience.
-                          </FieldDescription>
-                          {fieldState.error && (
-                            <FieldError errors={[fieldState.error]} />
-                          )}
-                        </FieldContent>
-
-                        <Select
-                          value={field.value}
-                          onValueChange={field.onChange}
-                        >
-                          <SelectTrigger className="min-w-32">
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectSeparator />
-                            {questionOpts.map((opt) => (
-                              <SelectItem key={opt.value} value={opt.value}>
-                                {opt.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                      <Field>
+                        <FieldLabel>First Name</FieldLabel>
+                        <Input {...field} />
+                        <FieldError errors={[fieldState.error]} />
                       </Field>
                     )}
                   />
                 </FieldGroup>
-
-                {/* Names */}
-                <div className="grid grid-cols-2 gap-4">
-                  <FormField
-                    control={form.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>First Name</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  <FormField
+                <FieldGroup>
+                  <Controller
                     control={form.control}
                     name="lastName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Last Name</FormLabel>
-                        <FormControl>
-                          <Input {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                {/* Display Name */}
-                <FormField
-                  control={form.control}
-                  name="displayName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Display Name</FormLabel>
-                      <FormControl>
+                    render={({ field, fieldState }) => (
+                      <Field>
+                        <FieldLabel>Last Name</FieldLabel>
                         <Input {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Email */}
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email</FormLabel>
-                      <FormControl>
-                        <Input type="email" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Password */}
-                {(["password", "confirmPassword"] as const).map((name) => (
-                  <FormField
-                    key={name}
-                    control={form.control}
-                    name={name}
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>
-                          {name === "password"
-                            ? "Password"
-                            : "Confirm Password"}
-                        </FormLabel>
-                        <div className="relative">
-                          <FormControl>
-                            <Input
-                              {...field}
-                              type={showPassword ? "text" : "password"}
-                              className="pr-10"
-                            />
-                          </FormControl>
-                          <Button
-                            type="button"
-                            variant="ghost"
-                            size="icon"
-                            className="absolute top-0 right-0 h-full"
-                            onClick={() => setShowPassword((v) => !v)}
-                          >
-                            {showPassword ? (
-                              <EyeOff className="h-4 w-4" />
-                            ) : (
-                              <Eye className="h-4 w-4" />
-                            )}
-                          </Button>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
+                        <FieldError errors={[fieldState.error]} />
+                      </Field>
                     )}
                   />
-                ))}
+                </FieldGroup>
+              </div>
 
-                {/* Terms */}
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="terms" />
-                  <Label
-                    htmlFor="terms"
-                    className="text-muted-foreground text-sm"
-                  >
-                    I agree to the{" "}
-                    <Link href="#" className="text-primary hover:underline">
-                      Terms
-                    </Link>{" "}
-                    and{" "}
-                    <Link href="#" className="text-primary hover:underline">
-                      Conditions
-                    </Link>
-                  </Label>
-                </div>
+              {/* Display Name */}
+              <Controller
+                control={form.control}
+                name="displayName"
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <FieldLabel>Display Name</FieldLabel>
+                    <Input {...field} />
+                    <FieldError errors={[fieldState.error]} />
+                  </Field>
+                )}
+              />
 
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={form.formState.isSubmitting}
+              {/* Email */}
+              <Controller
+                control={form.control}
+                name="email"
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <FieldLabel>Email</FieldLabel>
+                    <Input type="email" {...field} />
+                    <FieldError errors={[fieldState.error]} />
+                  </Field>
+                )}
+              />
+
+              {/* Password */}
+              {(["password", "confirmPassword"] as const).map((name) => (
+                <Controller
+                  key={name}
+                  control={form.control}
+                  name={name}
+                  render={({ field, fieldState }) => (
+                    <Field>
+                      <FieldLabel>
+                        {name === "password" ? "Password" : "Confirm Password"}
+                      </FieldLabel>
+                      <div className="relative">
+                        <Input
+                          {...field}
+                          type={showPassword ? "text" : "password"}
+                          className="pr-10"
+                        />
+
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          className="absolute top-0 right-0 h-full"
+                          onClick={() => setShowPassword((v) => !v)}
+                        >
+                          {showPassword ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
+                        </Button>
+                      </div>
+                      <FieldError errors={[fieldState.error]} />
+                    </Field>
+                  )}
+                />
+              ))}
+
+              {/* Terms */}
+              <div className="flex items-center space-x-2">
+                <Checkbox id="terms" />
+                <Label
+                  htmlFor="terms"
+                  className="text-muted-foreground text-sm"
                 >
-                  Create Account
-                </Button>
-              </form>
-            </Form>
+                  I agree to the{" "}
+                  <Link href="#" className="text-primary hover:underline">
+                    Terms
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="#" className="text-primary hover:underline">
+                    Conditions
+                  </Link>
+                </Label>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={form.formState.isSubmitting}
+              >
+                Create Account
+              </Button>
+            </form>
+
             <div className="my-4 flex items-center justify-center gap-2">
               <Separator className="flex-1" />
               <span className="text-sm">OR</span>

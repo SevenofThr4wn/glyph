@@ -17,7 +17,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { authClient, useSession } from "@/lib/auth/auth-client";
-import { getInitials } from "@/lib/utils";
 import {
   BadgeCheck,
   Bell,
@@ -73,7 +72,7 @@ export function NavUser() {
                   alt={currentUser?.name}
                 />
                 <AvatarFallback className="rounded-lg">
-                  {getInitials(currentUser?.name ?? "")}
+                  CN
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
@@ -99,7 +98,7 @@ export function NavUser() {
                     alt={currentUser?.name}
                   />
                   <AvatarFallback className="rounded-lg">
-                    {getInitials(currentUser?.name ?? "")}
+                    CN
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
