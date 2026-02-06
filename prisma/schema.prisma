@@ -8,24 +8,27 @@ datasource db {
 }
 
 model User {
-  id              String    @id @default(cuid())
-  name            String    @unique
-  displayName     String?   @unique
-  email           String    @unique
-  emailVerified   Boolean   @default(false)
-  image           String?
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  isAnonymous     Boolean?  @default(false)
-  lastLoginMethod String?
-  role            String?
-  banned          Boolean?  @default(false)
-  banReason       String?
-  banExpires      DateTime?
-  sessions        Session[]
-  accounts        Account[]
-  apikeys         Apikey[]
-  profile UserProfile?
+  id                         String                      @id @default(cuid())
+  name                       String                      @unique
+  displayName                String?                     @unique
+  email                      String                      @unique
+  emailVerified              Boolean                     @default(false)
+  image                      String?
+  createdAt                  DateTime                    @default(now())
+  updatedAt                  DateTime                    @updatedAt
+  isAnonymous                Boolean?                    @default(false)
+  lastLoginMethod            String?
+  role                       String?
+  banned                     Boolean?                    @default(false)
+  banReason                  String?
+  banExpires                 DateTime?
+  sessions                   Session[]
+  accounts                   Account[]
+  apikeys                    Apikey[]
+  characters                 Character[]
+  profile                    UserProfile?
+  sexualityPreference        UserSexualityPreference?
+  userRelationshipPreference UserRelationshipPreference?
 
   @@map("users")
 }
@@ -108,6 +111,32 @@ model Apikey {
   @@map("apikey")
 }
 
+model Character {
+  id               String             @id @unique @default(cuid())
+  name             String             @unique
+  nickname         String?
+  preferredName    String?
+  briefDescription String?
+  bio              String?
+  Species          String
+  gender           Gender?
+  orientation      SexualOrientation?
+  thumbnailUrl     String?
+  avatarUrl        String?
+  imageURLs        String[]           @default([])
+  isVerified       Boolean?           @default(false)
+  hasFursuit       Boolean?           @default(false)
+
+  views            Int                @default(0)
+  likes            Int                @default(0)
+  userId           String
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt        DateTime           @default(now())
+
+  @@index([userId])
+  @@map("characters")
+}
+
 model UserProfile {
   id              String   @id @default(cuid())
   userId          String   @unique
@@ -131,7 +160,32 @@ model UserProfile {
   updatedAt       DateTime @updatedAt
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@index([userId])
   @@map("user_profiles")
+}
+
+model UserSexualityPreference {
+  id                    String             @id @default(cuid())
+  userId                String             @unique
+  orientation           SexualOrientation?
+  openForSexualContacts Boolean?           @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("user_sexuality_preferences")
+}
+
+model UserRelationshipPreference {
+  id                  String              @id @default(cuid())
+  userId              String              @unique
+  relationshipStatus  RelationshipStatus?
+  isLookingForPartner Boolean?            @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("user_relationship_preferences")
 }
 
 enum Gender {
@@ -140,10 +194,18 @@ enum Gender {
   NonBinary
 }
 
-enum SexualAlignment {
+enum SexualOrientation {
   ASEXUAL
   BISEXUAL
   GAY
   HETEROSEXUAL
   PREFER_NOT_TO_SAY
+}
+
+enum RelationshipStatus {
+  SINGLE
+  IN_RELATIONSHIP
+  MARRIED
+  DIVORCED
+  WIDOWED
 }
