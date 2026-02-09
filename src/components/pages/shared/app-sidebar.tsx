@@ -1,13 +1,7 @@
 "use client";
 
-import { Calendar, Cpu, Pi, Send, Settings2, Telescope } from "lucide-react";
-import {
-  IconCat,
-  IconDog,
-  IconFish,
-  IconHelpCircle,
-  IconReport,
-} from "@tabler/icons-react";
+import { Pi } from "lucide-react";
+import { IconCat, IconDog, IconFish } from "@tabler/icons-react";
 import {
   Sidebar,
   SidebarContent,
@@ -19,13 +13,22 @@ import {
 } from "@/components/ui/sidebar";
 import { ComponentProps } from "react";
 import { NavCharacters, NavMain, NavSecondary, NavUser } from "./nav";
+import {
+  BadgeAlertIcon,
+  CalendarDaysIcon,
+  CircleHelpIcon,
+  CpuIcon,
+  HourglassIcon,
+  SlidersHorizontalIcon,
+  TelescopeIcon,
+} from "@/components/animated-icons";
 
 const data = {
   navMain: [
     {
       title: "Explore Content",
       url: "#",
-      icon: Telescope,
+      icon: <TelescopeIcon />,
       isActive: true,
       items: [
         {
@@ -49,7 +52,7 @@ const data = {
     {
       title: "Community Events",
       url: "#",
-      icon: Calendar,
+      icon: <CalendarDaysIcon />,
       items: [
         {
           title: "Today",
@@ -68,7 +71,7 @@ const data = {
     {
       title: "Technical",
       url: "#",
-      icon: Cpu,
+      icon: <CpuIcon />,
       items: [
         {
           title: "API Reference",
@@ -91,7 +94,7 @@ const data = {
     {
       title: "Site Settings",
       url: "#",
-      icon: Settings2,
+      icon: <SlidersHorizontalIcon />,
       items: [
         {
           title: "General",
@@ -116,34 +119,34 @@ const data = {
     {
       title: "Submit a Report",
       url: "/reports/submit-report",
-      icon: IconReport,
+      icon: <BadgeAlertIcon />,
     },
     {
       title: "Help & Support",
       url: "/support/submit-ticket",
-      icon: IconHelpCircle,
+      icon: <CircleHelpIcon />,
     },
     {
       title: "Feedback",
       url: "/feedback/submit-feedback",
-      icon: Send,
+      icon: <HourglassIcon />,
     },
   ],
   characters: [
     {
       name: "Test Character 1",
       url: "#",
-      icon: IconCat,
+      icon: <IconCat />,
     },
     {
       name: "Test Character 2",
       url: "#",
-      icon: IconDog,
+      icon: <IconDog />,
     },
     {
       name: "Test Character 3",
       url: "#",
-      icon: IconFish,
+      icon: <IconFish />,
     },
   ],
 };

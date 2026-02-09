@@ -1,8 +1,8 @@
 import { uuidv4 } from "zod";
 import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { serverEnv } from "@/lib/config";
 import { tigrisClient } from "@/lib/storage";
+import { serverEnv } from "@/lib/env";
 
 export function generateObjKey(
   uploadType: string,

@@ -6,9 +6,9 @@ import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import { ReactNode, useState } from "react";
 import SuperJSON from "superjson";
-import { clientEnv } from "@/lib/config";
 import { AppRouter } from "./routers/_app";
 import { makeQueryClient } from "./query-client";
+import { clientEnv } from "@/lib/env";
 
 export const trpc = createTRPCReact<AppRouter>();
 let clientQueryClientSingleton: QueryClient;

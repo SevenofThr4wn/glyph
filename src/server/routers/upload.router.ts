@@ -19,12 +19,12 @@ import {
 } from "@/lib/types";
 
 import { createRouter, protectedProcedure } from "../trpc";
-import { serverEnv } from "@/lib/config/env.server";
 import {
   generateObjKey,
   generateSignedUrl,
   getExpForType,
 } from "../server-utils";
+import { serverEnv } from "@/lib/env";
 
 const safeMetadata = (metadata: Record<string, string>) => {
   const sanitized: Record<string, string> = {};
@@ -69,7 +69,6 @@ export const uploadRouter = createRouter({
         });
       }
 
-      // Validate filename
       if (!/^[a-zA-Z0-9._-]+$/.test(fileName)) {
         throw new TRPCError({
           code: "BAD_REQUEST",

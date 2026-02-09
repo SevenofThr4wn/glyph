@@ -4,8 +4,7 @@ import {
   Folder,
   MoreHorizontal,
   Share,
-  Trash2,
-  type LucideIcon,
+  Trash2
 } from "lucide-react";
 
 import {
@@ -24,6 +23,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { ReactNode } from "react";
 
 export function NavCharacters({
   characters,
@@ -31,7 +31,7 @@ export function NavCharacters({
   characters: {
     name: string;
     url: string;
-    icon: LucideIcon;
+    icon: ReactNode;
   }[];
 }) {
   const { isMobile } = useSidebar();
@@ -44,7 +44,7 @@ export function NavCharacters({
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
               <a href={item.url}>
-                <item.icon />
+                {item.icon}
                 <span>{item.name}</span>
               </a>
             </SidebarMenuButton>

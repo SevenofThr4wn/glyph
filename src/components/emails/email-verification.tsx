@@ -1,4 +1,4 @@
-import { clientEnv } from "@/lib/config";
+import { clientEnv } from "@/lib/env";
 import {
   Html,
   Head,

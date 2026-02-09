@@ -1,5 +1,5 @@
 import { S3Client } from "@aws-sdk/client-s3";
-import { serverEnv } from "../config/env.server";
+import { serverEnv } from "../env";
 
 export const tigrisClient = new S3Client({
   endpoint: serverEnv.TIGRIS_S3_ENDPOINT,

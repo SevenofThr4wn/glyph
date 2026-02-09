@@ -59,7 +59,8 @@ export const ModelName = {
   Character: 'Character',
   UserProfile: 'UserProfile',
   UserSexualityPreference: 'UserSexualityPreference',
-  UserRelationshipPreference: 'UserRelationshipPreference'
+  UserRelationshipPreference: 'UserRelationshipPreference',
+  Event: 'Event'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -239,6 +240,22 @@ export const UserRelationshipPreferenceScalarFieldEnum = {
 } as const
 
 export type UserRelationshipPreferenceScalarFieldEnum = (typeof UserRelationshipPreferenceScalarFieldEnum)[keyof typeof UserRelationshipPreferenceScalarFieldEnum]
+
+
+export const EventScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  location: 'location',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  published: 'published',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
 export const SortOrder = {

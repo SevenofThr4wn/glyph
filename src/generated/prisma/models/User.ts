@@ -261,6 +261,7 @@ export type UserWhereInput = {
   profile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
   sexualityPreference?: Prisma.XOR<Prisma.UserSexualityPreferenceNullableScalarRelationFilter, Prisma.UserSexualityPreferenceWhereInput> | null
   userRelationshipPreference?: Prisma.XOR<Prisma.UserRelationshipPreferenceNullableScalarRelationFilter, Prisma.UserRelationshipPreferenceWhereInput> | null
+  events?: Prisma.EventListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -285,6 +286,7 @@ export type UserOrderByWithRelationInput = {
   profile?: Prisma.UserProfileOrderByWithRelationInput
   sexualityPreference?: Prisma.UserSexualityPreferenceOrderByWithRelationInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceOrderByWithRelationInput
+  events?: Prisma.EventOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -312,6 +314,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   profile?: Prisma.XOR<Prisma.UserProfileNullableScalarRelationFilter, Prisma.UserProfileWhereInput> | null
   sexualityPreference?: Prisma.XOR<Prisma.UserSexualityPreferenceNullableScalarRelationFilter, Prisma.UserSexualityPreferenceWhereInput> | null
   userRelationshipPreference?: Prisma.XOR<Prisma.UserRelationshipPreferenceNullableScalarRelationFilter, Prisma.UserRelationshipPreferenceWhereInput> | null
+  events?: Prisma.EventListRelationFilter
 }, "id" | "name" | "displayName" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -376,6 +379,7 @@ export type UserCreateInput = {
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -400,6 +404,7 @@ export type UserUncheckedCreateInput = {
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -424,6 +429,7 @@ export type UserUpdateInput = {
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -448,6 +454,7 @@ export type UserUncheckedUpdateInput = {
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -679,6 +686,20 @@ export type UserUpdateOneRequiredWithoutUserRelationshipPreferenceNestedInput = 
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserRelationshipPreferenceInput, Prisma.UserUpdateWithoutUserRelationshipPreferenceInput>, Prisma.UserUncheckedUpdateWithoutUserRelationshipPreferenceInput>
 }
 
+export type UserCreateNestedOneWithoutEventsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEventsInput, Prisma.UserUncheckedCreateWithoutEventsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutEventsInput, Prisma.UserUncheckedCreateWithoutEventsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutEventsInput
+  upsert?: Prisma.UserUpsertWithoutEventsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEventsInput, Prisma.UserUpdateWithoutEventsInput>, Prisma.UserUncheckedUpdateWithoutEventsInput>
+}
+
 export type UserCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -700,6 +721,7 @@ export type UserCreateWithoutSessionsInput = {
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -723,6 +745,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -762,6 +785,7 @@ export type UserUpdateWithoutSessionsInput = {
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -785,6 +809,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -808,6 +833,7 @@ export type UserCreateWithoutAccountsInput = {
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -831,6 +857,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -870,6 +897,7 @@ export type UserUpdateWithoutAccountsInput = {
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -893,6 +921,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutApikeysInput = {
@@ -916,6 +945,7 @@ export type UserCreateWithoutApikeysInput = {
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutApikeysInput = {
@@ -939,6 +969,7 @@ export type UserUncheckedCreateWithoutApikeysInput = {
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutApikeysInput = {
@@ -978,6 +1009,7 @@ export type UserUpdateWithoutApikeysInput = {
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApikeysInput = {
@@ -1001,6 +1033,7 @@ export type UserUncheckedUpdateWithoutApikeysInput = {
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCharactersInput = {
@@ -1024,6 +1057,7 @@ export type UserCreateWithoutCharactersInput = {
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCharactersInput = {
@@ -1047,6 +1081,7 @@ export type UserUncheckedCreateWithoutCharactersInput = {
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCharactersInput = {
@@ -1086,6 +1121,7 @@ export type UserUpdateWithoutCharactersInput = {
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCharactersInput = {
@@ -1109,6 +1145,7 @@ export type UserUncheckedUpdateWithoutCharactersInput = {
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -1132,6 +1169,7 @@ export type UserCreateWithoutProfileInput = {
   characters?: Prisma.CharacterCreateNestedManyWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -1155,6 +1193,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   characters?: Prisma.CharacterUncheckedCreateNestedManyWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -1194,6 +1233,7 @@ export type UserUpdateWithoutProfileInput = {
   characters?: Prisma.CharacterUpdateManyWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -1217,6 +1257,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   characters?: Prisma.CharacterUncheckedUpdateManyWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSexualityPreferenceInput = {
@@ -1240,6 +1281,7 @@ export type UserCreateWithoutSexualityPreferenceInput = {
   characters?: Prisma.CharacterCreateNestedManyWithoutUserInput
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSexualityPreferenceInput = {
@@ -1263,6 +1305,7 @@ export type UserUncheckedCreateWithoutSexualityPreferenceInput = {
   characters?: Prisma.CharacterUncheckedCreateNestedManyWithoutUserInput
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSexualityPreferenceInput = {
@@ -1302,6 +1345,7 @@ export type UserUpdateWithoutSexualityPreferenceInput = {
   characters?: Prisma.CharacterUpdateManyWithoutUserNestedInput
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSexualityPreferenceInput = {
@@ -1325,6 +1369,7 @@ export type UserUncheckedUpdateWithoutSexualityPreferenceInput = {
   characters?: Prisma.CharacterUncheckedUpdateManyWithoutUserNestedInput
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserRelationshipPreferenceInput = {
@@ -1348,6 +1393,7 @@ export type UserCreateWithoutUserRelationshipPreferenceInput = {
   characters?: Prisma.CharacterCreateNestedManyWithoutUserInput
   profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
+  events?: Prisma.EventCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserRelationshipPreferenceInput = {
@@ -1371,6 +1417,7 @@ export type UserUncheckedCreateWithoutUserRelationshipPreferenceInput = {
   characters?: Prisma.CharacterUncheckedCreateNestedManyWithoutUserInput
   profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
+  events?: Prisma.EventUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserRelationshipPreferenceInput = {
@@ -1410,6 +1457,7 @@ export type UserUpdateWithoutUserRelationshipPreferenceInput = {
   characters?: Prisma.CharacterUpdateManyWithoutUserNestedInput
   profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserRelationshipPreferenceInput = {
@@ -1433,6 +1481,119 @@ export type UserUncheckedUpdateWithoutUserRelationshipPreferenceInput = {
   characters?: Prisma.CharacterUncheckedUpdateManyWithoutUserNestedInput
   profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
   sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  events?: Prisma.EventUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutEventsInput = {
+  id?: string
+  name: string
+  displayName?: string | null
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isAnonymous?: boolean | null
+  lastLoginMethod?: string | null
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyCreateNestedManyWithoutUserInput
+  characters?: Prisma.CharacterCreateNestedManyWithoutUserInput
+  profile?: Prisma.UserProfileCreateNestedOneWithoutUserInput
+  sexualityPreference?: Prisma.UserSexualityPreferenceCreateNestedOneWithoutUserInput
+  userRelationshipPreference?: Prisma.UserRelationshipPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutEventsInput = {
+  id?: string
+  name: string
+  displayName?: string | null
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  isAnonymous?: boolean | null
+  lastLoginMethod?: string | null
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  apikeys?: Prisma.ApikeyUncheckedCreateNestedManyWithoutUserInput
+  characters?: Prisma.CharacterUncheckedCreateNestedManyWithoutUserInput
+  profile?: Prisma.UserProfileUncheckedCreateNestedOneWithoutUserInput
+  sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedCreateNestedOneWithoutUserInput
+  userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutEventsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutEventsInput, Prisma.UserUncheckedCreateWithoutEventsInput>
+}
+
+export type UserUpsertWithoutEventsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutEventsInput, Prisma.UserUncheckedUpdateWithoutEventsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutEventsInput, Prisma.UserUncheckedCreateWithoutEventsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutEventsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutEventsInput, Prisma.UserUncheckedUpdateWithoutEventsInput>
+}
+
+export type UserUpdateWithoutEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAnonymous?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  lastLoginMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUpdateManyWithoutUserNestedInput
+  characters?: Prisma.CharacterUpdateManyWithoutUserNestedInput
+  profile?: Prisma.UserProfileUpdateOneWithoutUserNestedInput
+  sexualityPreference?: Prisma.UserSexualityPreferenceUpdateOneWithoutUserNestedInput
+  userRelationshipPreference?: Prisma.UserRelationshipPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isAnonymous?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  lastLoginMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  apikeys?: Prisma.ApikeyUncheckedUpdateManyWithoutUserNestedInput
+  characters?: Prisma.CharacterUncheckedUpdateManyWithoutUserNestedInput
+  profile?: Prisma.UserProfileUncheckedUpdateOneWithoutUserNestedInput
+  sexualityPreference?: Prisma.UserSexualityPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  userRelationshipPreference?: Prisma.UserRelationshipPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 
@@ -1445,6 +1606,7 @@ export type UserCountOutputType = {
   accounts: number
   apikeys: number
   characters: number
+  events: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1452,6 +1614,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   apikeys?: boolean | UserCountOutputTypeCountApikeysArgs
   characters?: boolean | UserCountOutputTypeCountCharactersArgs
+  events?: boolean | UserCountOutputTypeCountEventsArgs
 }
 
 /**
@@ -1492,6 +1655,13 @@ export type UserCountOutputTypeCountCharactersArgs<ExtArgs extends runtime.Types
   where?: Prisma.CharacterWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.EventWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1515,6 +1685,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
   sexualityPreference?: boolean | Prisma.User$sexualityPreferenceArgs<ExtArgs>
   userRelationshipPreference?: boolean | Prisma.User$userRelationshipPreferenceArgs<ExtArgs>
+  events?: boolean | Prisma.User$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1578,6 +1749,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
   sexualityPreference?: boolean | Prisma.User$sexualityPreferenceArgs<ExtArgs>
   userRelationshipPreference?: boolean | Prisma.User$userRelationshipPreferenceArgs<ExtArgs>
+  events?: boolean | Prisma.User$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1593,6 +1765,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     profile: Prisma.$UserProfilePayload<ExtArgs> | null
     sexualityPreference: Prisma.$UserSexualityPreferencePayload<ExtArgs> | null
     userRelationshipPreference: Prisma.$UserRelationshipPreferencePayload<ExtArgs> | null
+    events: Prisma.$EventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2010,6 +2183,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   profile<T extends Prisma.User$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$profileArgs<ExtArgs>>): Prisma.Prisma__UserProfileClient<runtime.Types.Result.GetResult<Prisma.$UserProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   sexualityPreference<T extends Prisma.User$sexualityPreferenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sexualityPreferenceArgs<ExtArgs>>): Prisma.Prisma__UserSexualityPreferenceClient<runtime.Types.Result.GetResult<Prisma.$UserSexualityPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   userRelationshipPreference<T extends Prisma.User$userRelationshipPreferenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userRelationshipPreferenceArgs<ExtArgs>>): Prisma.Prisma__UserRelationshipPreferenceClient<runtime.Types.Result.GetResult<Prisma.$UserRelationshipPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2591,6 +2765,30 @@ export type User$userRelationshipPreferenceArgs<ExtArgs extends runtime.Types.Ex
    */
   include?: Prisma.UserRelationshipPreferenceInclude<ExtArgs> | null
   where?: Prisma.UserRelationshipPreferenceWhereInput
+}
+
+/**
+ * User.events
+ */
+export type User$eventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Event
+   */
+  select?: Prisma.EventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Event
+   */
+  omit?: Prisma.EventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.EventInclude<ExtArgs> | null
+  where?: Prisma.EventWhereInput
+  orderBy?: Prisma.EventOrderByWithRelationInput | Prisma.EventOrderByWithRelationInput[]
+  cursor?: Prisma.EventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.EventScalarFieldEnum | Prisma.EventScalarFieldEnum[]
 }
 
 /**

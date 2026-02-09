@@ -6,7 +6,7 @@ import {
   apiKeyClient,
   adminClient,
 } from "better-auth/client/plugins";
-import { clientEnv } from "../config";
+import { clientEnv } from "../env";
 
 const baseURL = clientEnv.NEXT_PUBLIC_BETTER_AUTH_URL;
 

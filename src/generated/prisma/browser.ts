@@ -62,3 +62,8 @@ export type UserSexualityPreference = Prisma.UserSexualityPreferenceModel
  * 
  */
 export type UserRelationshipPreference = Prisma.UserRelationshipPreferenceModel
+/**
+ * Model Event
+ * 
+ */
+export type Event = Prisma.EventModel

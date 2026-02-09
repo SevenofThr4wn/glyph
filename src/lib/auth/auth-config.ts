@@ -2,7 +2,6 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { prisma } from "../db/prisma";
-import { clientEnv, serverEnv } from "../config";
 import {
   admin,
   anonymous,
@@ -12,6 +11,7 @@ import {
 } from "better-auth/plugins";
 import { OTPEmail, PasswordReset } from "@/components/emails";
 import { resend } from "../email/resend";
+import { clientEnv, serverEnv } from "../env";
 
 export const auth = betterAuth({
   appName: clientEnv.NEXT_PUBLIC_APP_URL,
