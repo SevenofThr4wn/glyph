@@ -36,7 +36,7 @@ const HourglassIcon = forwardRef<HourglassIconHandle, HourglassIconProps>(
           controls.start("animate");
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -47,7 +47,7 @@ const HourglassIcon = forwardRef<HourglassIconHandle, HourglassIconProps>(
           controls.start("normal");
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
@@ -96,7 +96,7 @@ const HourglassIcon = forwardRef<HourglassIconHandle, HourglassIconProps>(
         </svg>
       </div>
     );
-  }
+  },
 );
 
 HourglassIcon.displayName = "HourglassIcon";

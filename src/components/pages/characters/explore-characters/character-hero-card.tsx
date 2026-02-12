@@ -32,7 +32,7 @@ export function CharacterHeroCard({ character }: CharacterHeroCardProps) {
 
       {character.description && (
         <CardContent>
-          <p className="text-sm text-muted-foreground line-clamp-2">
+          <p className="text-muted-foreground line-clamp-2 text-sm">
             {character.description}
           </p>
         </CardContent>

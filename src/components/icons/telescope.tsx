@@ -7,28 +7,33 @@ import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-export interface BadgeAlertIconHandle {
+export interface TelescopeIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface BadgeAlertIconProps extends HTMLAttributes<HTMLDivElement> {
+interface TelescopeIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const ICON_VARIANTS: Variants = {
-  normal: { scale: 1, rotate: 0 },
-  animate: {
-    scale: [1, 1.1, 1.1, 1.1, 1],
-    rotate: [0, -3, 3, -2, 2, 0],
+const SCOPE_VARIANTS: Variants = {
+  normal: {
+    rotate: 0,
     transition: {
-      duration: 0.5,
-      times: [0, 0.2, 0.4, 0.6, 1],
+      duration: 0.6,
+      ease: "easeInOut",
+    },
+  },
+  animate: {
+    rotate: -15,
+    transition: {
+      duration: 0.8,
       ease: "easeInOut",
     },
   },
 };
-const BadgeAlertIcon = forwardRef<BadgeAlertIconHandle, BadgeAlertIconProps>(
+
+const TelescopeIcon = forwardRef<TelescopeIconHandle, TelescopeIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
@@ -50,7 +55,7 @@ const BadgeAlertIcon = forwardRef<BadgeAlertIconHandle, BadgeAlertIconProps>(
           controls.start("animate");
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -61,7 +66,7 @@ const BadgeAlertIcon = forwardRef<BadgeAlertIconHandle, BadgeAlertIconProps>(
           controls.start("normal");
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
@@ -71,28 +76,38 @@ const BadgeAlertIcon = forwardRef<BadgeAlertIconHandle, BadgeAlertIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <motion.svg
-          animate={controls}
+        <svg
           fill="none"
           height={size}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2"
-          variants={ICON_VARIANTS}
           viewBox="0 0 24 24"
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
-          <line x1="12" x2="12" y1="8" y2="12" />
-          <line x1="12" x2="12.01" y1="16" y2="16" />
-        </motion.svg>
+          <motion.g
+            animate={controls}
+            style={{ transformOrigin: "12px 13px" }}
+            variants={SCOPE_VARIANTS}
+          >
+            <path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44" />
+            <path d="m13.56 11.747 4.332-.924" />
+            <path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44" />
+            <path d="m13.56 11.747 4.332-.924" />
+            <path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z" />
+            <path d="m6.158 8.633 1.114 4.456" />
+          </motion.g>
+          <path d="m16 21-3.105-6.21" />
+          <path d="m8 21 3.105-6.21" />
+          <circle cx="12" cy="13" r="2" />
+        </svg>
       </div>
     );
-  }
+  },
 );
 
-BadgeAlertIcon.displayName = "BadgeAlertIcon";
+TelescopeIcon.displayName = "TelescopeIcon";
 
-export { BadgeAlertIcon };
+export { TelescopeIcon };

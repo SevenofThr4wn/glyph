@@ -20,7 +20,7 @@ export function TrendingCharacters({
       {/* Section Header */}
       <div className="mb-6 flex items-center justify-between border-b pb-3">
         <div className="flex items-center gap-3">
-          <Flame className="size-8 text-primary" />
+          <Flame className="text-primary size-8" />
           <h2 className="text-3xl font-bold">Trending Characters</h2>
         </div>
         <Button variant="outline" onClick={onViewAll}>

@@ -43,13 +43,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="[--header-height:calc(--spacing(14))]">
-            <SidebarProvider className="flex flex-col">
-              <div className="flex flex-1">
-                <AppSidebar />
-                <SidebarInset>
-                  <TRPCProvider>{children}</TRPCProvider>
-                </SidebarInset>
-              </div>
+            <SidebarProvider defaultOpen={false}>
+              <AppSidebar />
+              <SidebarInset className="flex-1">
+                <TRPCProvider>{children}</TRPCProvider>
+              </SidebarInset>
             </SidebarProvider>
           </div>
         </ThemeProvider>

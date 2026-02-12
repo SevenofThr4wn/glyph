@@ -7,21 +7,28 @@ import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-export interface CircleHelpIconHandle {
+export interface BadgeAlertIconHandle {
   startAnimation: () => void;
   stopAnimation: () => void;
 }
 
-interface CircleHelpIconProps extends HTMLAttributes<HTMLDivElement> {
+interface BadgeAlertIconProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
 }
 
-const VARIANTS: Variants = {
-  normal: { rotate: 0 },
-  animate: { rotate: [0, -10, 10, -10, 0] },
+const ICON_VARIANTS: Variants = {
+  normal: { scale: 1, rotate: 0 },
+  animate: {
+    scale: [1, 1.1, 1.1, 1.1, 1],
+    rotate: [0, -3, 3, -2, 2, 0],
+    transition: {
+      duration: 0.5,
+      times: [0, 0.2, 0.4, 0.6, 1],
+      ease: "easeInOut",
+    },
+  },
 };
-
-const CircleHelpIcon = forwardRef<CircleHelpIconHandle, CircleHelpIconProps>(
+const BadgeAlertIcon = forwardRef<BadgeAlertIconHandle, BadgeAlertIconProps>(
   ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
     const controls = useAnimation();
     const isControlledRef = useRef(false);
@@ -43,7 +50,7 @@ const CircleHelpIcon = forwardRef<CircleHelpIconHandle, CircleHelpIconProps>(
           controls.start("animate");
         }
       },
-      [controls, onMouseEnter]
+      [controls, onMouseEnter],
     );
 
     const handleMouseLeave = useCallback(
@@ -54,7 +61,7 @@ const CircleHelpIcon = forwardRef<CircleHelpIconHandle, CircleHelpIconProps>(
           controls.start("normal");
         }
       },
-      [controls, onMouseLeave]
+      [controls, onMouseLeave],
     );
 
     return (
@@ -64,35 +71,28 @@ const CircleHelpIcon = forwardRef<CircleHelpIconHandle, CircleHelpIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
-        <svg
+        <motion.svg
+          animate={controls}
           fill="none"
           height={size}
           stroke="currentColor"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="2"
+          variants={ICON_VARIANTS}
           viewBox="0 0 24 24"
           width={size}
           xmlns="http://www.w3.org/2000/svg"
         >
-          <circle cx="12" cy="12" r="10" />
-          <motion.g
-            animate={controls}
-            transition={{
-              duration: 0.5,
-              ease: "easeInOut",
-            }}
-            variants={VARIANTS}
-          >
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-            <path d="M12 17h.01" />
-          </motion.g>
-        </svg>
+          <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+          <line x1="12" x2="12" y1="8" y2="12" />
+          <line x1="12" x2="12.01" y1="16" y2="16" />
+        </motion.svg>
       </div>
     );
-  }
+  },
 );
 
-CircleHelpIcon.displayName = "CircleHelpIcon";
+BadgeAlertIcon.displayName = "BadgeAlertIcon";
 
-export { CircleHelpIcon };
+export { BadgeAlertIcon };

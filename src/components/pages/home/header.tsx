@@ -2,18 +2,13 @@
 
 import { LiquidChrome } from "@/components/effects/liquid-chrome";
 import { TextType } from "@/components/effects/text-type";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <div className="relative overflow-hidden">
-      <header className="relative flex h-[40vh] min-h-75 items-center justify-center overflow-hidden">
+      <header className="relative flex min-h-[60vh] items-center justify-center overflow-hidden md:min-h-[70vh]">
         <div className="absolute inset-0">
           <LiquidChrome
             speed={0.15}
@@ -25,40 +20,40 @@ export default function Header() {
         <div className="absolute inset-0 bg-linear-to-b from-purple-900/20 via-transparent to-transparent" />
 
         <div className="animate-gradient-x absolute inset-0 bg-linear-to-r from-purple-900/10 via-violet-900/5 to-fuchsia-900/10" />
+
         <div className="relative z-30 mx-auto w-full max-w-6xl px-4 text-center">
-          <Card className="relative rounded-2xl border border-purple-500/20 bg-black/40 p-6 shadow-2xl shadow-purple-900/20 backdrop-blur-md md:p-8">
-            <CardHeader>
-              <CardTitle className="text-center">
-                <TextType
-                  text="Welcome to Glyph!"
-                  typingSpeed={75}
-                  pauseDuration={1500}
-                  showCursor={true}
-                  loop={false}
-                  cursorCharacter="_"
-                  className="text-5xl font-medium text-gray-300"
-                />
-              </CardTitle>
-              <CardDescription className="text-lg">
-                Your all-in-one platform for managing and showcasing your
-                digital assets.
-              </CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="mb-6 md:mb-8">
+            <TextType
+              text="Unleash Your Furry Creativity"
+              typingSpeed={50}
+              pauseDuration={2000}
+              showCursor={true}
+              loop={false}
+              cursorCharacter="_"
+              className="text-4xl font-bold tracking-tight text-gray-100 sm:text-5xl md:text-6xl"
+            />
+          </div>
+
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-300 md:mb-10 md:text-xl">
+            Your all-in-one platform for managing, showcasing, and connecting
+            through your digital assets with the furry community worldwide.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button asChild size="lg" className="min-w-48">
+              <Link href="/register">Create Your Profile</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="min-w-48">
+              <Link href="/explore-characters">Explore Characters →</Link>
+            </Button>
+            <Button asChild variant="ghost" size="lg" className="min-w-48">
+              <Link href="#demo">Watch Demo Video ▶</Link>
+            </Button>
+          </div>
         </div>
-        <div className="absolute right-0 bottom-0 left-0 z-20 h-20 bg-linear-to-t from-gray-900 to-transparent" />
+
+        <div className="from-background absolute right-0 bottom-0 left-0 z-20 h-20 bg-linear-to-t to-transparent" />
       </header>
-      <div className="relative h-[5vh] bg-[rgba(23,23,23,0)]">
-        <div
-          className={cn(
-            "absolute inset-0",
-            "bg-size-[80px_80px]",
-            "bg-[linear-gradient(to_right,--theme(--color-purple-900/0.1)_1px,transparent_1px),linear-gradient(to_bottom,--theme(--color-purple-900/0.1)_1px,transparent_1px)]",
-            "opacity-20",
-            "mask-[linear-gradient(to_bottom,black_0%,black_40%,transparent_100%)]",
-          )}
-        />
-      </div>
     </div>
   );
 }

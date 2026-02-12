@@ -2,12 +2,12 @@
 
 import { TrendingCharacters } from "@/components/pages/characters/explore-characters";
 import { Character } from "@/lib/types/character";
-import { faker } from '@faker-js/faker';
+import { faker } from "@faker-js/faker";
 
 // Placeholder data for demonstration purposes
 
 // Will be replaced with a tRPC call to fetch real data from the server in the future.
-const placeholderCreatorName =  faker.internet.displayName();
+const placeholderCreatorName = faker.internet.displayName();
 
 const placeholderDescripiton = faker.lorem.sentences(4);
 
@@ -68,11 +68,12 @@ interface ExploreCharactersPageProps {
   }>;
 }
 
-export default function ExploreCharactersPage(props: ExploreCharactersPageProps) {
-
+export default function ExploreCharactersPage(
+  props: ExploreCharactersPageProps,
+) {
   return (
     <div className="container mx-auto px-4 py-8">
-      <TrendingCharacters 
+      <TrendingCharacters
         featuredCharacters={sampleFeaturedCharacters}
         regularCharacters={sampleRegularCharacters}
       />

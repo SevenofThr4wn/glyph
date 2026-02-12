@@ -21,7 +21,7 @@ import {
   HourglassIcon,
   SlidersHorizontalIcon,
   TelescopeIcon,
-} from "@/components/animated-icons";
+} from "@/components/icons";
 
 const data = {
   navMain: [

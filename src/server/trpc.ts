@@ -33,7 +33,37 @@ const isAuthenticated = t.middleware(({ ctx, next }) => {
   });
 });
 
+const isModerator = t.middleware(async ({ ctx, next }) => {
+  if (!ctx.session?.user?.id) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  const data = await auth.api.userHasPermission({
+    body: {
+      userId: ctx.session.user.id,
+      role: "admin",
+      permissions: {
+        user: ["create", "update", "delete", "get"],
+      },
+    },
+  });
+
+  if (!data) {
+    throw new TRPCError({
+      code: "UNAUTHORIZED",
+    });
+  }
+
+  return next({
+    ctx: {
+      ...ctx,
+      session: ctx.session,
+    },
+  });
+});
+
 export const createRouter = t.router;
 export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(isAuthenticated);
+export const moderatorProcedure = t.procedure.use(isModerator);
 export const createCallerFactory = t.createCallerFactory;
