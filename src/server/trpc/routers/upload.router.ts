@@ -18,13 +18,13 @@ import {
   UploadTypeEnum,
 } from "@/lib/types";
 
-import { createRouter, protectedProcedure } from "../trpc";
 import {
   generateObjKey,
   generateSignedUrl,
   getExpForType,
-} from "../server-utils";
+} from "../../server-utils";
 import { serverEnv } from "@/lib/env";
+import { createRouter, protectedProcedure } from "../trpc";
 
 const safeMetadata = (metadata: Record<string, string>) => {
   const sanitized: Record<string, string> = {};

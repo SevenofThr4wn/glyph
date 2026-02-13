@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/pages/shared";
 import { ThemeProvider } from "@/lib/providers";
-import { TRPCProvider } from "@/server/client";
+import { TRPCProvider } from "@/server/trpc";
 import { Toaster } from "sonner";
 import "../globals.css";
 
