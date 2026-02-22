@@ -30,12 +30,6 @@ const oauthProviderVariables = {
   HUGGINGFACE_CLIENT_SECRET: secret,
 };
 
-
-const getstreamVariables = {
-  GETSTREAM_API_KEY: nonEmpty,
-  GETSTREAM_API_SECRET: secret,
-};
-
 const emailVariabes = {
   RESEND_API_KEY: nonEmpty,
   RESEND_EMAIL: email,
@@ -57,7 +51,6 @@ export const serverEnv = createEnv({
     ...authVariables,
     ...oauthProviderVariables,
     ...emailVariabes,
-    ...getstreamVariables,
     ...s3Variables,
   },
   client: {},
