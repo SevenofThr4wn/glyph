@@ -172,7 +172,7 @@ export function RegisterForm() {
                     render={({ field, fieldState }) => (
                       <Field>
                         <FieldLabel>First Name</FieldLabel>
-                        <Input {...field} />
+                        <Input autoComplete="given-name" {...field} />
                         <FieldError errors={[fieldState.error]} />
                       </Field>
                     )}
@@ -185,7 +185,7 @@ export function RegisterForm() {
                     render={({ field, fieldState }) => (
                       <Field>
                         <FieldLabel>Last Name</FieldLabel>
-                        <Input {...field} />
+                        <Input autoComplete="family-name" {...field} />
                         <FieldError errors={[fieldState.error]} />
                       </Field>
                     )}
@@ -213,7 +213,7 @@ export function RegisterForm() {
                 render={({ field, fieldState }) => (
                   <Field>
                     <FieldLabel>Email</FieldLabel>
-                    <Input type="email" {...field} />
+                    <Input type="email" autoComplete="email" {...field} />
                     <FieldError errors={[fieldState.error]} />
                   </Field>
                 )}

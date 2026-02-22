@@ -1,3 +1,5 @@
+"use server";
+
 import arcjet, {
   ArcjetDecision,
   BotOptions,
@@ -11,11 +13,11 @@ import arcjet, {
   slidingWindow,
   SlidingWindowRateLimitOptions,
 } from "@arcjet/next";
+import { serverEnv } from "../env";
 import { NextRequest } from "next/server";
+import { auth } from "./auth-config";
 import { findIp } from "@arcjet/ip";
 import { toNextJsHandler } from "better-auth/next-js";
-import { serverEnv } from "@/lib/env";
-import { auth } from "@/lib/auth/auth-config";
 
 export {
   detectBot,

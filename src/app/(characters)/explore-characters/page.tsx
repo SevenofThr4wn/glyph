@@ -61,16 +61,8 @@ const sampleRegularCharacters: Character[] = [
   },
 ];
 
-interface ExploreCharactersPageProps {
-  searchParams?: Promise<{
-    query?: string;
-    page?: string;
-  }>;
-}
 
-export default function ExploreCharactersPage(
-  props: ExploreCharactersPageProps,
-) {
+export default function ExploreCharactersPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <TrendingCharacters

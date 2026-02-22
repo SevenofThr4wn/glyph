@@ -5,8 +5,6 @@ const url = z.string().url();
 const nonEmpty = z.string().min(1);
 const email = z.string().email();
 const secret = z.string().min(16);
-const boolString = z.enum(["true", "false"]);
-const threshold = z.coerce.number().min(0).max(1);
 
 const authVariables = {
   BETTER_AUTH_SECRET: secret,
@@ -32,6 +30,12 @@ const oauthProviderVariables = {
   HUGGINGFACE_CLIENT_SECRET: secret,
 };
 
+
+const getstreamVariables = {
+  GETSTREAM_API_KEY: nonEmpty,
+  GETSTREAM_API_SECRET: secret,
+};
+
 const emailVariabes = {
   RESEND_API_KEY: nonEmpty,
   RESEND_EMAIL: email,
@@ -46,27 +50,15 @@ const s3Variables = {
   TIGRIS_REGION: nonEmpty,
 };
 
-const upstashVariables = {
-  UPSTASH_REDIS_REST_URL: nonEmpty,
-  UPSTASH_REDIS_REST_TOKEN: nonEmpty,
-};
-
-const moderationVariables = {
-  MODERATION_AUTO_APPROVE_THRESHOLD: threshold.default(0.3),
-  MODERATION_AUTO_REJECT_THRESHOLD: threshold.default(0.8),
-  MODERATION_AUTO_QUARANTINE_THRESHOLD: threshold.default(0.9),
-};
-
 export const serverEnv = createEnv({
   server: {
     DATABASE_URL: url,
-    MAINTENANCE_MODE: boolString,
+    NODE_ENV: nonEmpty,
     ...authVariables,
     ...oauthProviderVariables,
     ...emailVariabes,
+    ...getstreamVariables,
     ...s3Variables,
-    ...upstashVariables,
-    ...moderationVariables,
   },
   client: {},
   runtimeEnv: process.env as unknown as Record<string, string | undefined>,
